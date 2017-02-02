@@ -34,4 +34,4 @@ define("CONTACT_ME", "http://wpa.qq.com/msgrd?v=3&uin=492859377&site=qq&menu=yes
 ----------------------------------
 配置全部完成，现在就可以使用拉~
 
-管理地址为{HTTP_ROOT}admin.php
+管理地址为`{HTTP_ROOT}admin.php`
