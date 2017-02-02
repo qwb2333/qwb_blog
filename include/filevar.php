@@ -4,6 +4,7 @@ class QwbFileVar {
         $this->path = $p;
     }
     public function get($name, $ar = false) {
+        @mkdir(ROOT.'/../data/'.$this->path, 0777);
         $file = ROOT.'/../data/'.$this->path.'/'.$name;
         if(file_exists($file)) {
             $f = fopen($file, "r");
@@ -21,6 +22,7 @@ class QwbFileVar {
     }
 
     public function set($name, $content) {
+        @mkdir(ROOT.'/../data/'.$this->path, 0777);
         $file = ROOT.'/../data/'.$this->path.'/'.$name;
 
         $flag = false;
