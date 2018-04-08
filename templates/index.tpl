@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
     <head>
         <title>{BLOG_NAME}</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width initial-scale=0.6, user-scalable=0, minimal-ui">
+        <link href="images/qwb.ico" rel="shortcut icon">
         <link rel="stylesheet" type="text/css" href="https://dn-maxiang.qbox.me/res-min/themes/marxico.css">
-        <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style/qwb_style.css">
         <script src="js/qwb_index.js"></script>
         <script src="js/qwb_search.js"></script>
@@ -15,11 +17,11 @@
     <div class="qwb_container">
         {include file = "header.tpl"}
     <table class="main_table"><tr>
-    <td width="250px">
+    <td width="20%"  class="visible-lg">
         <div id="left_block">
             <div class="left_container">
                 <div class="list_main" id="list_tag">
-                    <img src="images/img.jpg">
+                    <img src="http://q1.qlogo.cn/g?b=qq&nk=492859377&s=5">
                 </div>
             </div>
 
@@ -64,7 +66,7 @@
         </div>
     </td>
 
-    <td width="990px">
+    <td>
         <div id="right_block">
             {foreach $list as $item}
             <div class="list_container">
@@ -84,7 +86,7 @@
                         <span>发表于 {$item.time}</span>
                         <span>|</span>
                         {insert name = 'admin_edit' pid = $item.pid}
-                        <span><a href="article.php?pid={$item.pid}#discuss">{insert name = 'discuss' pid = $item.pid}条评论</a></span>
+                        <span><a href="article.php?pid={$item.pid}#discuss"><span id = "sourceId::{$item.pid}" class = "cy_cmt_count" ></span>条评论</a></span>
                         <span>|</span>
                         <span>阅读次数:{insert name = 'visit' pid = $item.pid}</span>
                     </div>
@@ -99,11 +101,10 @@
 
     </td>
     </tr></table>
-
+    </div>
     {include file = "footer.tpl"}
-
-    </div></div>
-
+    </div>
+    <script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyt17vS8p"></script>
     {include file = "search.tpl"}
     </body>
 </html>

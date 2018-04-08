@@ -3,10 +3,11 @@
     <head>
         <title>{BLOG_NAME}</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width initial-scale=0.6, user-scalable=0, minimal-ui">
+        <link href="images/qwb.ico" rel="shortcut icon">
         <link rel="stylesheet" type="text/css" href="https://dn-maxiang.qbox.me/res-min/themes/marxico.css">
-        <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style/qwb_style.css">
-        <script src="js/qwb_message.js"></script>
         <script src="js/qwb_search.js"></script>
     </head>
 
@@ -21,28 +22,21 @@
         {BLOG_MESSAGE}
     </blockquote>
 
-    <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="message" data-title="留言板" data-url="{HTTP_ROOT}message.php"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    var duoshuoQuery = { short_name:"{DUOSHUO_NAME}" } ;
-    (function() { 
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    } )();
-</script>
-<!-- 多说公共JS代码 end -->
+    <!--PC版-->
+    <div id="SOHUCS" sid="message"></div>
+    <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+    <script type="text/javascript">
+    window.changyan.api.config({ 
+    appid: '{CHANGYAN_APPID}',
+    conf: '{CHANGYAN_CONF}'
+    });
+    </script>
 
     </div>
 
+    </div>
     {include file = "footer.tpl"}
-
-    </div></div>
+    </div>
 
     {include file = "search.tpl"}
     </body>

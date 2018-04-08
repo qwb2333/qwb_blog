@@ -43,6 +43,7 @@ if($article_total == 0) $article_page_total = 0;
 else $article_page_total = (int)(($article_total - 1) / PAGE_NUM) + 1;
 
 $time_list = $blog->time_list_total();
+$time_list = array_reverse($time_list);
 $time_list_count = array();
 for($i = 0; $i < count($time_list); $i++) {
     $time_list_count[$i] = $blog->time_list_num($time_list[$i]);

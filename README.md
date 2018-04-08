@@ -22,8 +22,8 @@ define("BLOG_NAME", "qwb's blog");//博客名
 define("BLOG_MESSAGE", "——愿你有一天能与你最重要的人重逢");//留言板文字
 define("PAGE_NUM", 7);//一页显示多少篇文章
 
-define("DUOSHUO_NAME", "xxx");//多说插件的short_name
-define("DUOSHUO_SA", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");//多说的密钥
+define("CHANGYAN_APPID", "xxx");//畅言的APPID
+define("CHANGYAN_CONF", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");//畅言的conf
 
 define("CONTACT_ME", "http://wpa.qq.com/msgrd?v=3&uin=492859377&site=qq&menu=yes");//最下面的联系方式
 ?>

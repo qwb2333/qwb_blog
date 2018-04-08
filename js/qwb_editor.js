@@ -16,7 +16,15 @@ $(document).ready(function(){
             if(!obj.success) {
                 alert(obj.message);
             }
-            else{
+            else {
+                var pid = $("#pid").val(), suf;
+                if(pid == -1) suf = "new";
+                  else suf = "pid" + pid;
+
+                clearInterval(timer);
+                localStorage.removeItem("qwb_content_" + suf);
+                localStorage.removeItem("qwb_title_" + suf);
+                localStorage.removeItem("qwb_tag_" + suf);
                 location.href = obj.url;
             }
         });
@@ -40,6 +48,19 @@ $(document).ready(function(){
                     location.href = "index.php";
                 }
             });
+        }
+    });
+    $("#editor_button_cacheClear").click(function() {
+        if(confirm("你确定要清空缓存吗")) {
+            var pid = $("#pid").val(), suf;
+            if(pid == -1) suf = "new";
+              else suf = "pid" + pid;
+
+            clearInterval(timer);
+            localStorage.removeItem("qwb_content_" + suf);
+            localStorage.removeItem("qwb_title_" + suf);
+            localStorage.removeItem("qwb_tag_" + suf);
+            location.reload();
         }
     });
 });

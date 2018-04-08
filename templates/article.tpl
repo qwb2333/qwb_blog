@@ -3,13 +3,16 @@
     <head>
         <title>{BLOG_NAME} - {htmlspecialchars($title)}</title>
         <meta charset="utf-8">
+        <link href="images/qwb.ico" rel="shortcut icon">
         <meta name="keywords" content="{htmlspecialchars($keywords)}">
         <meta name="description" content="{$description}">
+        <meta name="viewport" content="width=device-width initial-scale=0.6, user-scalable=0, minimal-ui">
+        <!--<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>-->
         <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="js/qwb_article.js"></script>
-        <script src="js/qwb_search.js"></script>
+	<script src="js/qwb_search.js"></script>
         <link rel="stylesheet" type="text/css" href="https://dn-maxiang.qbox.me/res-min/themes/marxico.css">
         <link rel="stylesheet" type="text/css" href="style/qwb_style.css">
+	<style>.qwb_container{ min-height: 100vh;}</style>
     </head>
 
     <body>
@@ -30,7 +33,7 @@
                 <span>发表于 {$time}</span>
                 <span>|</span>
                 {insert name = 'admin_edit' pid = $pid}
-                <span><a href="article.php?pid={$pid}#discuss">{insert name = 'discuss' pid = $pid}条评论</a></span>
+                <span><a href="article.php?pid={$pid}#discuss"><span id = "sourceId::{$pid}" class = "cy_cmt_count" ></span>条评论</a></span><script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyt17vS8p"></script>
                 <span>|</span>
                 <span>阅读次数:{insert name = 'visit' pid = $pid}</span>
             </div>
@@ -49,12 +52,11 @@
         <script src="editor/lib/flowchart.min.js"></script>
         <script src="editor/lib/jquery.flowchart.min.js"></script>
 
-        <script src="editor/editormd.min.js"></script>
+        <script src="editor/editormd.js"></script>
         <script type="text/javascript">
             $(function() {
                 var testEditormdView;
                 testEditormdView = editormd.markdownToHTML("article_view", {
-                    emoji : true,
                     tex : true,                   // 开启科学公式TeX语言支持，默认关闭
                     flowChart : true,             // 开启流程图支持，默认关闭
                     sequenceDiagram : true,
@@ -65,31 +67,22 @@
         </script>
 
 
-
-    <!-- 多说评论框 start -->
-    <div style="margin-top: 100px;">   </div>
-    <div class="ds-thread" data-thread-key="{$pid}" data-title="{htmlspecialchars($title)}" data-url="{HTTP_ROOT}article.php?pid={$pid}"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    var duoshuoQuery = { short_name:"{DUOSHUO_NAME}" } ;
-    (function() { 
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    } )();
-</script>
-<!-- 多说公共JS代码 end -->
+    <!--PC版-->
+    <div id="SOHUCS" sid="{$pid}"></div>
+    <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+    <script type="text/javascript">
+    window.changyan.api.config({ 
+    appid: '{CHANGYAN_APPID}',
+    conf: '{CHANGYAN_CONF}'
+    });
+    </script>
 
     <div id="discuss">   </div>
     </div>
 
+    </div>
     {include file = 'footer.tpl'}
-
-    </div></div>
+    </div>
 
     {include file = "search.tpl"}
     </body>

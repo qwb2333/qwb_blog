@@ -27,7 +27,7 @@ function insert_admin_edit($param) {
 
 if(isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
     $now = time() - $_SESSION['beginTime'];
-    if($now <= 60 * 60) {
+    if($now <= 60 * 60 * 24) {
         $config['admin'] = true;
         $_SESSION['beginTime'] = time();
     }

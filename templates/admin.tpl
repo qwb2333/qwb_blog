@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
     <head>
         <title>{BLOG_NAME}</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width initial-scale=0.6, user-scalable=0, minimal-ui">
+        <link href="images/qwb.ico" rel="shortcut icon">
         <link rel="stylesheet" type="text/css" href="https://dn-maxiang.qbox.me/res-min/themes/marxico.css">
-        <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style/qwb_style.css">
         <script src="js/qwb_message.js"></script>
         <script src="js/qwb_admin.js"></script>
@@ -30,9 +32,9 @@
         </div>
     </div>
 
+    </div>
     {include file = "footer.tpl"}
-
-    </div></div>
+    </div>
 
     {include file = "search.tpl"}
     </body>

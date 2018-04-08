@@ -2,9 +2,12 @@
 class QwbFileVar {
     function __construct($p) {
         $this->path = $p;
+        $dir_file = ROOT.'/data'.$this->path;
+        if(!file_exists($dir_file)) {
+            mkdir($dir_path, 755, true);
+        }
     }
     public function get($name, $ar = false) {
-        @mkdir(ROOT.'/../data/'.$this->path, 0777);
         $file = ROOT.'/../data/'.$this->path.'/'.$name;
         if(file_exists($file)) {
             $f = fopen($file, "r");
@@ -22,7 +25,6 @@ class QwbFileVar {
     }
 
     public function set($name, $content) {
-        @mkdir(ROOT.'/../data/'.$this->path, 0777);
         $file = ROOT.'/../data/'.$this->path.'/'.$name;
 
         $flag = false;

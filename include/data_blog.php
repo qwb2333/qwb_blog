@@ -229,8 +229,8 @@ class QwbBlog {
 
     //列出范围的
     public function article_list_range($begin, $end) {
-        $end++;
-        return $this->data->query("blog_article_list", array(), "{$begin}, {$end}", array("key" => "pid", "sort" => 1));
+        $len = $end - $begin + 1;
+        return $this->data->query("blog_article_list", array(), "{$begin}, {$len}", array("key" => "pid", "sort" => 1));
     }
 
     //一共有哪一些tag
@@ -306,13 +306,13 @@ class QwbBlog {
             $this->data->connect();
         }
         $mysqli = &$this->data->mysqli;
-        $content = $mysqli->real_escape_string($content);
+        $content = addcslashes($mysqli->real_escape_string($content), "%_");
         $sql = "SELECT `pid` FROM `blog_article_content` WHERE `text` LIKE '%{$content}%' OR `title` LIKE '%{$content}%' ORDER BY `pid` DESC";
         $retval = $mysqli->query($sql);
         if($retval == false) return 0;
 
         $ret = array();
-        while($row = $retval->fetch_array(MYSQL_ASSOC)) {
+        while($row = $retval->fetch_array(MYSQLI_ASSOC)) {
             array_push($ret, $row['pid']);
         }
 

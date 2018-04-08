@@ -69,7 +69,7 @@
             "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|", 
             "h1", "h2", "h3", "h4", "h5", "h6", "|", 
             "list-ul", "list-ol", "hr", "|",
-            "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|",
+            "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "html-entities", "pagebreak", "|",
             "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
             "help", "info"
         ],
@@ -165,7 +165,7 @@
         emoji                : false,          // :emoji: , Support Github emoji, Twitter Emoji (Twemoji);
                                                // Support FontAwesome icon emoji :fa-xxx: > Using fontAwesome icon web fonts;
                                                // Support Editor.md logo icon emoji :editormd-logo: :editormd-logo-1x: > 1~8x;
-        tex                  : false,          // TeX(LaTeX), based on KaTeX
+        tex                  : true,          // TeX(LaTeX), based on KaTeX
         flowChart            : false,          // flowChart.js only support IE9+
         sequenceDiagram      : false,          // sequenceDiagram.js only support IE9+
         previewCodeHighlight : true,
@@ -1505,7 +1505,7 @@
                 var tex  = $(this);
                 editormd.$katex.render(tex.text(), tex[0]);
                 
-                tex.find(".katex").css("font-size", "1.6em");
+                tex.find(".katex").css("font-size", "1.3em");
             });   
 
             return this;
@@ -3078,7 +3078,6 @@
             var cm        = this.cm;
             var cursor    = cm.getCursor();
             var selection = cm.getSelection();
-
             cm.replaceSelection("$$" + selection + "$$");
 
             if(selection === "") {
@@ -3911,7 +3910,7 @@
             pageBreak            : true,
             atLink               : true,    // for @link
             emailLink            : true,    // for mail address auto link
-            tex                  : false,
+            tex                  : true,
             taskList             : false,   // Github Flavored Markdown task lists
             emoji                : false,
             flowChart            : false,
@@ -4017,9 +4016,9 @@
         {
             var katexHandle = function() {
                 div.find("." + editormd.classNames.tex).each(function(){
-                    var tex  = $(this);                    
-                    katex.render(tex.html().replace(/&lt;/g, "<").replace(/&gt;/g, ">"), tex[0]);                    
-                    tex.find(".katex").css("font-size", "1.6em");
+                    var tex  = $(this);
+                    katex.render(tex.html().replace(/<br>/g,"").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g,"&"), tex[0]);
+                    tex.find(".katex").css("font-size", "1.3em");
                 });
             };
             
@@ -4182,8 +4181,8 @@
     // 使用国外的CDN，加载速度有时会很慢，或者自定义URL
     // You can custom KaTeX load url.
     editormd.katexURL  = {
-        css : "//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min",
-        js  : "//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min"
+        css : "//cdn.bootcss.com/KaTeX/0.7.1/katex.min",
+        js  : "//cdn.bootcss.com/KaTeX/0.7.1/katex.min"
     };
     
     editormd.kaTeXLoaded = false;

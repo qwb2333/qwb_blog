@@ -1,15 +1,38 @@
+@media screen and (max-width: 992px){
+    .visible-lg{
+        display:none!important;
+    }
+}
+
+html,body{
+    height: 100%;
+}
+body{
+    display: block;
+}
 a:hover {
     text-decoration: none;
 }
+#qwb_global{
+    display: block;
+}
 .qwb_container{
     width: 100%;
-    min-width: 1265px;
+    min-height: 100vh;
+    margin-bottom: -176px; 
+}
+.qwb_container:after {
+  content: "";
+  display: block;
+  height: 176px;
 }
 .main_table{
-    width: 1265px;
+    width: 84%;
     margin: 0px auto;
     border: none;
     opacity: 0.01;
+    margin-left: 8%;
+    margin-right: 8%;
 }
 .main_table td, .main_table tr{
     border: none;
@@ -24,11 +47,13 @@ a:hover {
 .header_title{
     font-size: 28px;
     float: left;
+    margin-left: 12%;
 }
 .header_dev{
     text-align: right;
     font-size: 16px;
     line-height: 37px;
+    margin-right: 16%;
 }
 .header_main a{
     color: #fff;
@@ -37,8 +62,7 @@ a:hover {
 .header_main{
     height: 20px;
     padding-top: 45px;
-    margin: auto;
-    width: 1000px;
+    width: 100%;
     color: #fff;
 }
 .header_search{
@@ -71,7 +95,7 @@ a:hover {
 }
 #right_block{
     float: right;
-    width: 990px;
+    width: 100%;
     display: block;
     margin-top: 5px;
 }
@@ -111,7 +135,7 @@ a:hover {
     min-height: 200px;
 }
 .list_title{
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 20px;
@@ -321,8 +345,9 @@ a:hover {
     line-height: 1.8;
 }
 .main_article{
-    width: 965px;
-    margin: 0px auto;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
     border: none;
     padding-top: 20px;
 }
@@ -346,6 +371,9 @@ a:hover {
     background-position: 0 -6px;
     background-size: 22px 22px;
 }
+pre{
+    padding: 5px;
+}
 .block_message:after{
     bottom: -20px;
     background-image: url("../images/quote-r.svg");
@@ -359,22 +387,18 @@ a:hover {
     background-repeat: no-repeat;
     background-size: 22px 22px;
 }
-.editor_nev{
-    border: 0;
-    margin-bottom: 10px;
-}
-.editor_nev td,.editor_nev tr{
-    border: 0;
-}
 .editor_title_input{
     width: 600px;
-    margin-left: 10px;
+}
+.main_label{
+    margin-bottom: 20px;
 }
 .main_editor{
-    width: 1265px;
+    width: 95%;
     margin: 0px auto;
     border: none;
     padding-top: 20px;
+    height: 90vh;
 }
 .editor_title_tag{
     width: 300px;

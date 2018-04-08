@@ -6,7 +6,7 @@ class QwbDatabase {
         }
     }
     public function connect() {
-        $this->mysqli = new mysqli(DATA_HOST, DATA_USER, DATA_PASS, DATA_DATABASE);
+        $this->mysqli = new mysqli('p:'.DATA_HOST, DATA_USER, DATA_PASS, DATA_DATABASE, DATA_PORT);
         if(mysqli_connect_errno()) {
             unset($this->mysqli);
             return false;
@@ -103,7 +103,7 @@ class QwbDatabase {
         if(!$retval) return false;
 
         $ret = array(); $cnt = 0;
-        while($row = $retval->fetch_array(MYSQL_ASSOC)) {
+        while($row = $retval->fetch_array(MYSQLI_ASSOC)) {
             $ret[$cnt] = $row;
             $cnt++;
         }
